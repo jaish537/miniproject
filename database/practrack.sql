@@ -1,11 +1,6 @@
-
 -- PracTrack Database
 
-
--- =========================================
--- 1. STUDENTS TABLE
--- =========================================
-
+-- 1. STUDENTS
 CREATE TABLE students (
     student_id NUMBER PRIMARY KEY,
     name VARCHAR2(100) NOT NULL,
@@ -16,11 +11,7 @@ CREATE TABLE students (
     section VARCHAR2(20)
 );
 
-
--- =========================================
--- 2. TEACHERS TABLE
--- =========================================
-
+-- 2. TEACHERS
 CREATE TABLE teachers (
     teacher_id NUMBER PRIMARY KEY,
     name VARCHAR2(100) NOT NULL,
@@ -28,22 +19,14 @@ CREATE TABLE teachers (
     password VARCHAR2(100) NOT NULL
 );
 
-
--- =========================================
--- 3. SUBJECTS TABLE
--- =========================================
-
+-- 3. SUBJECTS
 CREATE TABLE subjects (
     subject_id NUMBER PRIMARY KEY,
     subject_name VARCHAR2(100) NOT NULL,
     semester NUMBER
 );
 
-
--- =========================================
--- 4. PRACTICALS TABLE
--- =========================================
-
+-- 4. PRACTICALS
 CREATE TABLE practicals (
     practical_id NUMBER PRIMARY KEY,
     subject_id NUMBER,
@@ -51,17 +34,12 @@ CREATE TABLE practicals (
     title VARCHAR2(200),
     description CLOB,
     deadline DATE,
-
     CONSTRAINT fk_practical_subject
-    FOREIGN KEY (subject_id)
-    REFERENCES subjects(subject_id)
+        FOREIGN KEY (subject_id)
+        REFERENCES subjects(subject_id)
 );
 
-
--- =========================================
--- 5. SUBMISSIONS TABLE
--- =========================================
-
+-- 5. SUBMISSIONS
 CREATE TABLE submissions (
     submission_id NUMBER PRIMARY KEY,
     student_id NUMBER,
@@ -70,21 +48,15 @@ CREATE TABLE submissions (
     file_path VARCHAR2(500),
     submitted_at TIMESTAMP DEFAULT SYSTIMESTAMP,
     status VARCHAR2(30) DEFAULT 'SUBMITTED',
-
     CONSTRAINT fk_submission_student
-    FOREIGN KEY (student_id)
-    REFERENCES students(student_id),
-
+        FOREIGN KEY (student_id)
+        REFERENCES students(student_id),
     CONSTRAINT fk_submission_practical
-    FOREIGN KEY (practical_id)
-    REFERENCES practicals(practical_id)
+        FOREIGN KEY (practical_id)
+        REFERENCES practicals(practical_id)
 );
 
-
--- =========================================
--- 6. REVIEWS TABLE
--- =========================================
-
+-- 6. REVIEWS
 CREATE TABLE reviews (
     review_id NUMBER PRIMARY KEY,
     submission_id NUMBER,
@@ -92,21 +64,15 @@ CREATE TABLE reviews (
     status VARCHAR2(30),
     remarks CLOB,
     reviewed_at TIMESTAMP DEFAULT SYSTIMESTAMP,
-
     CONSTRAINT fk_review_submission
-    FOREIGN KEY (submission_id)
-    REFERENCES submissions(submission_id),
-
+        FOREIGN KEY (submission_id)
+        REFERENCES submissions(submission_id),
     CONSTRAINT fk_review_teacher
-    FOREIGN KEY (teacher_id)
-    REFERENCES teachers(teacher_id)
+        FOREIGN KEY (teacher_id)
+        REFERENCES teachers(teacher_id)
 );
 
-
--- =========================================
--- 7. NOTIFICATIONS TABLE
--- =========================================
-
+-- 7. NOTIFICATIONS
 CREATE TABLE notifications (
     notification_id NUMBER PRIMARY KEY,
     user_type VARCHAR2(20),
@@ -116,70 +82,17 @@ CREATE TABLE notifications (
     created_at TIMESTAMP DEFAULT SYSTIMESTAMP
 );
 
-
--- =========================================
 -- SEQUENCES
--- =========================================
+CREATE SEQUENCE student_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE teacher_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE subject_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE practical_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE submission_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE review_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE notification_seq START WITH 1 INCREMENT BY 1;
 
-
--- Student Sequence
-
-CREATE SEQUENCE student_seq
-START WITH 1
-INCREMENT BY 1;
-
-
--- Teacher Sequence
-
-CREATE SEQUENCE teacher_seq
-START WITH 1
-INCREMENT BY 1;
-
-
--- Subject Sequence
-
-CREATE SEQUENCE subject_seq
-START WITH 1
-INCREMENT BY 1;
-
-
--- Practical Sequence
-
-CREATE SEQUENCE practical_seq
-START WITH 1
-INCREMENT BY 1;
-
-
--- Submission Sequence
-
-CREATE SEQUENCE submission_seq
-START WITH 1
-INCREMENT BY 1;
-
-
--- Review Sequence
-
-CREATE SEQUENCE review_seq
-START WITH 1
-INCREMENT BY 1;
-
-
--- Notification Sequence
-
-CREATE SEQUENCE notification_seq
-START WITH 1
-INCREMENT BY 1;
-
-
--- =========================================
 -- CHECK TABLES
--- =========================================
+SELECT table_name FROM user_tables ORDER BY table_name;
 
-SELECT table_name FROM user_tables;
-
-
--- =========================================
 -- CHECK SEQUENCES
--- =========================================
-
-SELECT sequence_name FROM user_sequences;
+SELECT sequence_name FROM user_sequences ORDER BY sequence_name;
