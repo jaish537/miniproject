@@ -1,8 +1,3 @@
-<%-- 
-    Document   : submissions
-    Created on : 19 Sep, 2026, 4:21:02 PM
-    Author     : Admin
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
