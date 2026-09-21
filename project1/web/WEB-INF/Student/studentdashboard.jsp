@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>PracTrack-Student Dashboard</h1>
-        <h3>Welcome,jaish</h3>
+        <h3>Welcome, <%= session.getAttribute("userName") %></h3>
         <hr>
         <h2>My Practicals</h2>
         <table border="1" cellpadding="10">
