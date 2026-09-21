@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,11 +6,12 @@
         <title>Notifications</title>
     </head>
     <body>
+
         <h1>Notifications</h1>
+
         <ul>
-            <li>Your Practical 1 has been submitted successfully</li>
-            <li>Practical 2 is pending for submission</li>
-            <li>No new notifications</li>
+            <!-- Notifications will come from database -->
         </ul>
+
     </body>
 </html>
