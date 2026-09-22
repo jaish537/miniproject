@@ -15,6 +15,11 @@
         <a href="${pageContext.request.contextPath}/practicals">
                View Practicals
         </a>
+               <br><br>
+
+<a href="${pageContext.request.contextPath}/notifications">
+    Notifications
+</a>
                
         <table border="1" cellpadding="10">
             <tr>
