@@ -35,4 +35,33 @@ public class PracticalDAO {
 
         return ps.executeQuery();
     }
+
+    public int addPractical(long subjectId,
+                            int practicalNo,
+                            String title,
+                            String description,
+                            java.sql.Date deadline)
+            throws SQLException {
+
+        String sql =
+                "INSERT INTO practicals " +
+                "(practical_id, subject_id, practical_no, title, description, deadline) " +
+                "VALUES (practical_seq.NEXTVAL, ?, ?, ?, ?, ?)";
+
+        Connection con = dbconnection.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setLong(1, subjectId);
+        ps.setInt(2, practicalNo);
+        ps.setString(3, title);
+        ps.setString(4, description);
+        ps.setDate(5, deadline);
+
+        int result = ps.executeUpdate();
+
+        ps.close();
+        con.close();
+
+        return result;
+    }
 }

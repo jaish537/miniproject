@@ -34,7 +34,27 @@
             </tr>
 
         <br>
-        <h2>Pending Submissions</h2>
+        <hr>
+
+<h2>Teacher Actions</h2>
+
+<a href="${pageContext.request.contextPath}/addPractical">
+    Add Practical
+</a>
+
+<br><br>
+
+<a href="${pageContext.request.contextPath}/submissions">
+    View Student Submissions
+</a>
+
+<br><br>
+
+<a href="${pageContext.request.contextPath}/notifications">
+    Notifications
+</a>
+
+<hr>
     <tr>
         <th>Student</th>
         <th>Practical</th>
@@ -54,5 +74,10 @@
         <td>Check File</td>
     </tr>
 </table>
+    <hr>
+
+<a href="${pageContext.request.contextPath}/logout">
+    Logout
+</a>
     </body>
 </html>

@@ -4,9 +4,73 @@
         <servlet-name>loginservlet</servlet-name>
         <servlet-class>com.practrack.controller.loginservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddPracticalServlet</servlet-name>
+        <servlet-class>com.practrack.controller.AddPracticalServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PracticalsServlet</servlet-name>
+        <servlet-class>com.practrack.controller.PracticalsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmitPracticalServlet</servlet-name>
+        <servlet-class>com.practrack.controller.SubmitPracticalServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmissionStatusServlet</servlet-name>
+        <servlet-class>com.practrack.controller.SubmissionStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmissionsServlet</servlet-name>
+        <servlet-class>com.practrack.controller.SubmissionsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReviewSubmissionServlet</servlet-name>
+        <servlet-class>com.practrack.controller.ReviewSubmissionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NotificationsServlet</servlet-name>
+        <servlet-class>com.practrack.controller.NotificationsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.practrack.controller.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginservlet</servlet-name>
         <url-pattern>/loginservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPracticalServlet</servlet-name>
+        <url-pattern>/AddPracticalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PracticalsServlet</servlet-name>
+        <url-pattern>/PracticalsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitPracticalServlet</servlet-name>
+        <url-pattern>/SubmitPracticalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmissionStatusServlet</servlet-name>
+        <url-pattern>/SubmissionStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmissionsServlet</servlet-name>
+        <url-pattern>/SubmissionsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewSubmissionServlet</servlet-name>
+        <url-pattern>/ReviewSubmissionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotificationsServlet</servlet-name>
+        <url-pattern>/NotificationsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

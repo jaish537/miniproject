@@ -1,46 +1,61 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type"
+              content="text/html; charset=UTF-8">
         <title>Review Submission</title>
     </head>
+
     <body>
 
         <h1>Review Student Submission</h1>
 
         <p>
             <strong>Student Name:</strong>
-            ${submission.studentName}
+            <%= request.getAttribute("studentName") %>
         </p>
 
         <p>
             <strong>Practical:</strong>
-            ${submission.practicalTitle}
+            <%= request.getAttribute("practicalTitle") %>
         </p>
 
         <p>
             <strong>Submitted On:</strong>
-            ${submission.submittedOn}
+            <%= request.getAttribute("submittedOn") %>
         </p>
 
         <p>
-            <strong>Submitted File:</strong>
-            <a href="#">View / Download File</a>
+            <strong>File Name:</strong>
+            <%= request.getAttribute("fileName") %>
         </p>
 
-        <br>
+        <p>
+            <strong>Current Status:</strong>
+            <%= request.getAttribute("status") %>
+        </p>
 
-        <form action="#" method="post">
+        <hr>
 
-            <label for="remark">Teacher Remark:</label>
+        <form action="<%= request.getContextPath() %>/reviewSubmission"
+              method="post">
+
+            <input type="hidden"
+                   name="submissionId"
+                   value="<%= request.getAttribute("submissionId") %>">
+
+            <label for="remark">
+                Teacher Remark:
+            </label>
+
             <br>
 
             <textarea id="remark"
                       name="remark"
                       rows="5"
                       cols="50"
-                      placeholder="Enter your remarks"
                       required></textarea>
 
             <br><br>

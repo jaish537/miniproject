@@ -11,6 +11,11 @@
         <h3>Welcome, <%= session.getAttribute("userName") %></h3>
         <hr>
         <h2>My Practicals</h2>
+        
+        <a href="${pageContext.request.contextPath}/practicals">
+               View Practicals
+        </a>
+               
         <table border="1" cellpadding="10">
             <tr>
                 <th>Practical</th>
@@ -44,5 +49,10 @@
                 <td>Submit</td>
              </tr>   
         </table>
+               <hr>
+
+<a href="${pageContext.request.contextPath}/logout">
+    Logout
+</a>
     </body>
 </html>
