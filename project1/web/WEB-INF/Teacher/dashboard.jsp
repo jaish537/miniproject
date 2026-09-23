@@ -1,83 +1,88 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-       
         <title>Teacher Dashboard</title>
     </head>
+
     <body>
+
         <h1>Practrack-Teacher Dashboard</h1>
-        <h3>Welcome, <%= session.getAttribute("userName") %></h3>
+
+        <h3>
+            Welcome, <%= session.getAttribute("userName") %>
+        </h3>
+
         <hr>
+
         <h2>Practical Overview</h2>
+
         <table border="1" cellpadding="10">
+
             <tr>
                 <th>Category</th>
                 <th>Count</th>
             </tr>
+
             <tr>
                 <td>Total Students</td>
-                <td>60</td>
+                <td><%= request.getAttribute("totalStudents") %></td>
             </tr>
-             <tr>
+
+            <tr>
                 <td>Submitted</td>
-                <td>52</td>
+                <td><%= request.getAttribute("submitted") %></td>
             </tr>
-             <tr>
+
+            <tr>
                 <td>Checked</td>
-                <td>40</td>
+                <td><%= request.getAttribute("checked") %></td>
             </tr>
+
             <tr>
                 <td>Pending</td>
-                <td>12</td>
+                <td><%= request.getAttribute("pending") %></td>
             </tr>
+
+        </table>
 
         <br>
         <hr>
 
-<h2>Teacher Actions</h2>
+        <h2>Teacher Actions</h2>
 
-<a href="${pageContext.request.contextPath}/addPractical">
-    Add Practical
-</a>
+        <a href="${pageContext.request.contextPath}/addPractical">
+            Add Practical
+        </a>
 
-<br><br>
+        <br><br>
 
-<a href="${pageContext.request.contextPath}/submissions">
-    View Student Submissions
-</a>
+        <a href="${pageContext.request.contextPath}/submissions">
+            View Student Submissions
+        </a>
 
-<br><br>
+        <br><br>
 
-<a href="${pageContext.request.contextPath}/notifications">
-    Notifications
-</a>
+        <a href="${pageContext.request.contextPath}/notifications">
+            Notifications
+        </a>
 
-<hr>
-    <tr>
-        <th>Student</th>
-        <th>Practical</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>  
-    <tr>
-        <td>Jaish</td>
-        <td>Practical 45</td>
-        <td>Submitted</td>
-        <td>Check File</td>
-    </tr>
-      <tr>
-        <td>lakshya</td>
-        <td>Practical 45</td>
-        <td>Submitted</td>
-        <td>Check File</td>
-    </tr>
-</table>
-    <hr>
+        <hr>
 
-<a href="${pageContext.request.contextPath}/logout">
-    Logout
-</a>
+        <h2>Recent Submissions</h2>
+
+        <p>
+            View detailed student submissions using
+            <a href="${pageContext.request.contextPath}/submissions">
+                View Student Submissions
+            </a>.
+        </p>
+
+        <hr>
+
+        <a href="${pageContext.request.contextPath}/logout">
+            Logout
+        </a>
+
     </body>
 </html>

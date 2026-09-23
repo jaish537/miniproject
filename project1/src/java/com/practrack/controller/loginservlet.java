@@ -48,8 +48,9 @@ public class loginservlet extends HttpServlet {
                 session.setAttribute("userEmail", email);
                 session.setAttribute("role", "student");
 
-                request.getRequestDispatcher("/WEB-INF/Student/studentdashboard.jsp"
-                ).forward(request,response);
+                response.sendRedirect(
+                request.getContextPath() + "/studentDashboard");
+
                 return;
             }
 
@@ -75,8 +76,8 @@ public class loginservlet extends HttpServlet {
                 session.setAttribute("userEmail", email);
                 session.setAttribute("role", "teacher");
 
-                request.getRequestDispatcher("/WEB-INF/Teacher/dashboard.jsp"
-                       ).forward(request,response);
+                response.sendRedirect(
+                request.getContextPath() + "/teacherDashboard");
                 return;
             }
 

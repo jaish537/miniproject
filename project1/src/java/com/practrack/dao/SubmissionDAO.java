@@ -105,4 +105,31 @@ public class SubmissionDAO {
 
         return result;
     }
+
+    public long getStudentIdBySubmission(long submissionId)
+            throws SQLException {
+
+        String sql =
+                "SELECT student_id FROM submissions " +
+                "WHERE submission_id = ?";
+
+        Connection con = dbconnection.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setLong(1, submissionId);
+
+        ResultSet rs = ps.executeQuery();
+
+        long studentId = 0;
+
+        if (rs.next()) {
+            studentId = rs.getLong("student_id");
+        }
+
+        rs.close();
+        ps.close();
+        con.close();
+
+        return studentId;
+    }
 }

@@ -2,6 +2,7 @@ package com.practrack.controller;
 
 import com.practrack.dao.SubmissionDAO;
 import com.practrack.dao.TeacherDAO;
+import com.practrack.dao.NotificationDAO;
 import java.io.IOException;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
@@ -110,19 +111,53 @@ public class ReviewSubmissionServlet extends HttpServlet {
 
             TeacherDAO teacherDAO = new TeacherDAO();
             SubmissionDAO submissionDAO = new SubmissionDAO();
+            NotificationDAO notificationDAO =
+                    new NotificationDAO();
 
+            long submissionIdValue =
+                    Long.parseLong(submissionId);
+
+            // Save teacher review
             teacherDAO.saveReview(
-                    Long.parseLong(submissionId),
+                    submissionIdValue,
                     teacherId,
                     status,
                     remarks
             );
 
+            // Update submission status
             submissionDAO.updateStatus(
-                    Long.parseLong(submissionId),
+                    submissionIdValue,
                     status
             );
 
+            // Get student ID
+            long studentId =
+                    submissionDAO.getStudentIdBySubmission(
+                            submissionIdValue
+                    );
+
+            // Create notification for student
+            String message;
+
+            if ("CHECKED".equalsIgnoreCase(status)) {
+
+                message =
+                        "Your practical has been checked.";
+
+            } else {
+
+                message =
+                        "Your practical requires resubmission.";
+            }
+
+            notificationDAO.addNotification(
+                    "STUDENT",
+                    studentId,
+                    message
+            );
+
+            // Back to submissions
             response.sendRedirect(
                     request.getContextPath()
                     + "/submissions"

@@ -1,5 +1,6 @@
 package com.practrack.controller;
 
+import com.practrack.dao.NotificationDAO;
 import com.practrack.dao.SubmissionDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -40,7 +41,8 @@ public class SubmitPracticalServlet extends HttpServlet {
                     );
 
             SubmissionDAO dao = new SubmissionDAO();
-
+            NotificationDAO notificationDAO = new NotificationDAO();
+            
             int result = dao.submitPractical(
                     studentId,
                     Long.parseLong(practicalId),
@@ -48,7 +50,11 @@ public class SubmitPracticalServlet extends HttpServlet {
             );
 
             if (result > 0) {
-
+           notificationDAO.addNotification(
+                   "TEACHER",
+                    1,
+                   "New practical submission received."
+                  );
                 response.sendRedirect(
                         request.getContextPath()
                         + "/submissionStatus"

@@ -74,7 +74,7 @@
 
         <br>
 
-        <a href="<%= request.getContextPath() %>/Teacher/dashboard.jsp">
+        <a href="<%= request.getContextPath() %>/teacherDashboard">
             Back to Dashboard
         </a>
 
