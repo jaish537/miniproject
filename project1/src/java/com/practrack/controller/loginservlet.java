@@ -81,15 +81,9 @@ public class loginservlet extends HttpServlet {
                 return;
             }
 
-            // Login failed
-            response.setContentType("text/html;charset=UTF-8");
-            response.getWriter().println(
-                    "<h2>Invalid email or password</h2>"
-            );
-            response.getWriter().println(
-                    "<a href='" + request.getContextPath()
-                    + "/login.jsp'>Back to Login</a>"
-            );
+           // Login failed
+            request.getRequestDispatcher("/invalidLogin.jsp")
+            .forward(request, response);
 
         } catch (Exception e) {
 

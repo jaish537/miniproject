@@ -3,63 +3,149 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type"
-              content="text/html; charset=UTF-8">
-        <title>Practicals</title>
-    </head>
 
-    <body>
+<head>
 
-        <h1>Available Practicals</h1>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8">
 
-        <p>
-            Here you can view all practicals assigned by teacher.
-        </p>
+    <title>Available Practicals</title>
 
-        <hr>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 
-        <table border="1" cellpadding="10">
+</head>
 
-            <tr>
-                <th>Practical ID</th>
-                <th>Practical No</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Deadline</th>
-                <th>Action</th>
-            </tr>
+<body class="practicals-page">
 
-            <%
-                ResultSet rs =
-                    (ResultSet) request.getAttribute("practicals");
 
-                while (rs != null && rs.next()) {
-            %>
+    <!-- Header -->
 
-            <tr>
-                <td><%= rs.getLong("practical_id") %></td>
+    <div class="page-header">
 
-                <td><%= rs.getInt("practical_no") %></td>
+        <div class="page-brand">
 
-                <td><%= rs.getString("title") %></td>
+            <span class="page-brand-icon">🎓</span>
 
-                <td><%= rs.getString("description") %></td>
+            <span>PracTrack</span>
 
-                <td><%= rs.getDate("deadline") %></td>
+            <span class="page-separator">—</span>
 
-                <td>
-                    <a href="<%= request.getContextPath() %>/submitPractical">
-                        Submit
-                    </a>
-                </td>
-            </tr>
+            <span class="page-title">
+                Available Practicals
+            </span>
 
-            <%
-                }
-            %>
+        </div>
 
-        </table>
+       
 
-    </body>
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="page-content">
+
+        <div class="content-heading">
+
+            <h2>📚 Available Practicals</h2>
+
+            <p>
+                View practical assignments and submit your work.
+            </p>
+
+        </div>
+
+
+        <div class="practical-table-card">
+
+            <table>
+
+                <tr>
+
+                    <th>Practical No.</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Action</th>
+
+                </tr>
+
+
+                <%
+
+                    ResultSet rs =
+                            (ResultSet) request.getAttribute("practicals");
+
+                    while (rs != null && rs.next()) {
+
+                %>
+
+
+                <tr>
+
+                    <td>
+                        <span class="practical-number">
+                            <%= rs.getInt("practical_no") %>
+                        </span>
+                    </td>
+
+
+                    <td>
+                        <strong>
+                            <%= rs.getString("title") %>
+                        </strong>
+                    </td>
+
+
+                    <td>
+                        <%= rs.getString("description") %>
+                    </td>
+
+
+                    <td>
+                        <%= rs.getDate("deadline") %>
+                    </td>
+
+
+                    <td>
+
+                        <a class="submit-button"
+                           href="<%= request.getContextPath() %>/submitPractical">
+
+                            Submit
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+
+                <%
+
+                    }
+
+                %>
+
+            </table>
+
+        </div>
+
+
+        <!-- Back -->
+
+        <div class="page-bottom">
+
+            <a href="${pageContext.request.contextPath}/studentDashboard">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+</body>
+
 </html>

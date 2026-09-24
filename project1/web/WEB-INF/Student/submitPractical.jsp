@@ -1,47 +1,111 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type"
-              content="text/html; charset=UTF-8">
-        <title>Submit Practical</title>
-    </head>
 
-    <body>
+<head>
 
-        <h1>Submit Practical</h1>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8">
 
-        <form action="${pageContext.request.contextPath}/submitPractical"
-              method="post">
+    <title>Submit Practical</title>
 
-            <label for="practicalId">
-                Practical ID:
-            </label>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 
-            <input type="number"
-                   id="practicalId"
-                   name="practicalId"
-                   required>
+</head>
 
-            <br><br>
+<body class="submit-page">
 
-            <label for="fileName">
-                File Name:
-            </label>
 
-            <input type="text"
-                   id="fileName"
-                   name="fileName"
-                   placeholder="example.pdf"
-                   required>
+    <!-- Header -->
 
-            <br><br>
+    <div class="page-header">
 
-            <button type="submit">
+        <div class="page-brand">
+
+            <span class="page-brand-icon">🎓</span>
+
+            <span>PracTrack</span>
+
+            <span class="page-separator">—</span>
+
+            <span class="page-title">
                 Submit Practical
-            </button>
+            </span>
 
-        </form>
+        </div>
 
-    </body>
+    </div>
+
+
+    <!-- Main Content -->
+
+    <div class="submit-content">
+
+        <div class="submit-card">
+
+            <div class="submit-icon">
+                📤
+            </div>
+
+            <h2>Submit Your Practical</h2>
+
+            <p class="submit-description">
+                Enter the practical ID and your practical file name
+                to submit your work.
+            </p>
+
+
+            <form action="${pageContext.request.contextPath}/submitPractical"
+                  method="post">
+
+
+                <label for="practicalId">
+                    Practical ID
+                </label>
+
+                <input type="number"
+                       id="practicalId"
+                       name="practicalId"
+                       placeholder="Enter practical ID"
+                       required>
+
+
+                <label for="fileName">
+                    File Name
+                </label>
+
+                <input type="text"
+                       id="fileName"
+                       name="fileName"
+                       placeholder="Example: practical1.pdf"
+                       required>
+
+
+                <button type="submit"
+                        class="submit-practical-button">
+
+                    Submit Practical
+
+                </button>
+
+            </form>
+
+
+            <div class="submit-back">
+
+                <a href="${pageContext.request.contextPath}/practicals">
+                    ← Back to Practicals
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
 </html>

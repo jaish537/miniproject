@@ -3,80 +3,154 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type"
-              content="text/html; charset=UTF-8">
-        <title>Student Submissions</title>
-    </head>
 
-    <body>
+<head>
 
-        <h1>Student Submissions</h1>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8">
 
-        <table border="1" cellpadding="10">
+    <title>Student Submissions</title>
 
-            <tr>
-                <th>Student Name</th>
-                <th>Roll No</th>
-                <th>Practical</th>
-                <th>File Name</th>
-                <th>Submitted On</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 
-            <%
-                ResultSet rs =
-                    (ResultSet) request.getAttribute("submissions");
+</head>
 
-                while (rs != null && rs.next()) {
-            %>
+<body class="teacher-submissions-page">
 
-            <tr>
 
-                <td>
-                    <%= rs.getString("student_name") %>
-                </td>
+    <!-- Header -->
 
-                <td>
-                    <%= rs.getString("roll_no") %>
-                </td>
+    <div class="page-header">
 
-                <td>
-                    <%= rs.getString("title") %>
-                </td>
+        <div class="page-brand">
 
-                <td>
-                    <%= rs.getString("file_name") %>
-                </td>
+            <span class="page-brand-icon">🎓</span>
 
-                <td>
-                    <%= rs.getTimestamp("submitted_at") %>
-                </td>
+            <span>PracTrack</span>
 
-                <td>
-                    <%= rs.getString("status") %>
-                </td>
+            <span class="page-separator">—</span>
 
-                <td>
-                    <a href="<%= request.getContextPath() %>/reviewSubmission?submissionId=<%= rs.getLong("submission_id") %>">
-                        Review
-                    </a>
-                </td>
+            <span class="page-title">
+                Student Submissions
+            </span>
 
-            </tr>
+        </div>
 
-            <%
-                }
-            %>
+    </div>
 
-        </table>
 
-        <br>
+    <!-- Main Content -->
 
-        <a href="<%= request.getContextPath() %>/teacherDashboard">
-            Back to Dashboard
-        </a>
+    <div class="page-content">
 
-    </body>
+        <div class="content-heading">
+
+            <h2>📋 Student Submissions</h2>
+
+            <p>
+                View and review practical files submitted by students.
+            </p>
+
+        </div>
+
+
+        <div class="submissions-table-card">
+
+            <table>
+
+                <tr>
+
+                    <th>Student Name</th>
+                    <th>Roll No</th>
+                    <th>Practical</th>
+                    <th>File Name</th>
+                    <th>Submitted On</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+
+                <%
+                    ResultSet rs =
+                        (ResultSet) request.getAttribute("submissions");
+
+                    while (rs != null && rs.next()) {
+                %>
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            <%= rs.getString("student_name") %>
+                        </strong>
+                    </td>
+
+                    <td>
+                        <span class="roll-number">
+                            <%= rs.getString("roll_no") %>
+                        </span>
+                    </td>
+
+                    <td>
+                        <%= rs.getString("title") %>
+                    </td>
+
+                    <td>
+                        <span class="file-name">
+                            📄 <%= rs.getString("file_name") %>
+                        </span>
+                    </td>
+
+                    <td>
+                        <%= rs.getTimestamp("submitted_at") %>
+                    </td>
+
+                    <td>
+
+                        <%
+                            String status = rs.getString("status");
+                        %>
+
+                        <span class="status-badge <%= status.toLowerCase() %>">
+                            <%= status %>
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <a class="review-button"
+                           href="<%= request.getContextPath() %>/reviewSubmission?submissionId=<%= rs.getLong("submission_id") %>">
+
+                            Review
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                <%
+                    }
+                %>
+
+            </table>
+
+        </div>
+
+
+        <div class="page-bottom">
+
+            <a href="${pageContext.request.contextPath}/teacherDashboard">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
 </html>

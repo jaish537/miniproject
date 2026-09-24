@@ -1,88 +1,280 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Teacher Dashboard</title>
-    </head>
 
-    <body>
+<head>
 
-        <h1>Practrack-Teacher Dashboard</h1>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8">
 
-        <h3>
-            Welcome, <%= session.getAttribute("userName") %>
-        </h3>
+    <title>Teacher Dashboard</title>
 
-        <hr>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 
-        <h2>Practical Overview</h2>
+</head>
 
-        <table border="1" cellpadding="10">
+<body class="teacher-dashboard">
 
-            <tr>
-                <th>Category</th>
-                <th>Count</th>
-            </tr>
 
-            <tr>
-                <td>Total Students</td>
-                <td><%= request.getAttribute("totalStudents") %></td>
-            </tr>
+    <!-- Header -->
 
-            <tr>
-                <td>Submitted</td>
-                <td><%= request.getAttribute("submitted") %></td>
-            </tr>
+    <div class="teacher-header">
 
-            <tr>
-                <td>Checked</td>
-                <td><%= request.getAttribute("checked") %></td>
-            </tr>
+        <div class="teacher-brand">
 
-            <tr>
-                <td>Pending</td>
-                <td><%= request.getAttribute("pending") %></td>
-            </tr>
+            <span class="teacher-brand-icon">🎓</span>
 
-        </table>
+            <span>PracTrack</span>
 
-        <br>
-        <hr>
+            <span class="teacher-separator">—</span>
 
-        <h2>Teacher Actions</h2>
+            <span class="teacher-title">
+                Teacher Dashboard
+            </span>
 
-        <a href="${pageContext.request.contextPath}/addPractical">
-            Add Practical
-        </a>
+        </div>
 
-        <br><br>
+
+        <div class="teacher-profile">
+
+            👤 <%= session.getAttribute("userName") %>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Welcome -->
+
+    <div class="teacher-welcome">
+
+        <div class="teacher-welcome-icon">
+            👋
+        </div>
+
+        <div>
+
+            <h2>
+                Welcome, <%= session.getAttribute("userName") %>
+            </h2>
+
+            <p>
+                Manage practicals, review student submissions
+                and track submission activity here.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Overview -->
+
+    <div class="teacher-overview">
+
+        <h2>📊 &nbsp; Practical Overview</h2>
+
+
+        <div class="teacher-stats">
+
+
+            <div class="teacher-stat-card">
+
+                <div class="teacher-stat-icon">
+                    👨‍🎓
+                </div>
+
+                <div>
+
+                    <span>Total Students</span>
+
+                    <strong>
+                        <%= request.getAttribute("totalStudents") %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="teacher-stat-card">
+
+                <div class="teacher-stat-icon">
+                    📤
+                </div>
+
+                <div>
+
+                    <span>Submitted</span>
+
+                    <strong>
+                        <%= request.getAttribute("submitted") %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="teacher-stat-card">
+
+                <div class="teacher-stat-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>Checked</span>
+
+                    <strong>
+                        <%= request.getAttribute("checked") %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="teacher-stat-card">
+
+                <div class="teacher-stat-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <span>Pending</span>
+
+                    <strong>
+                        <%= request.getAttribute("pending") %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Teacher Actions -->
+
+    <div class="teacher-actions">
+
+        <h2>⚡ &nbsp; Quick Actions</h2>
+
+
+        <div class="teacher-action-cards">
+
+
+            <a class="teacher-action-card"
+               href="${pageContext.request.contextPath}/addPractical">
+
+                <span class="teacher-action-icon">
+                    ➕
+                </span>
+
+                <span>
+
+                    <strong>Add Practical</strong>
+
+                    <small>
+                        Create a new practical assignment
+                    </small>
+
+                </span>
+
+            </a>
+
+
+
+            <a class="teacher-action-card"
+               href="${pageContext.request.contextPath}/submissions">
+
+                <span class="teacher-action-icon">
+                    📋
+                </span>
+
+                <span>
+
+                    <strong>Student Submissions</strong>
+
+                    <small>
+                        Review submitted practical files
+                    </small>
+
+                </span>
+
+            </a>
+
+
+
+            <a class="teacher-action-card"
+               href="${pageContext.request.contextPath}/notifications">
+
+                <span class="teacher-action-icon">
+                    🔔
+                </span>
+
+                <span>
+
+                    <strong>Notifications</strong>
+
+                    <small>
+                        View latest submission updates
+                    </small>
+
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Recent Submissions -->
+
+    <div class="teacher-recent">
+
+        <h2>📄 &nbsp; Recent Submissions</h2>
+
+        <p>
+            View and review student practical submissions
+            from the Student Submissions section.
+        </p>
 
         <a href="${pageContext.request.contextPath}/submissions">
             View Student Submissions
         </a>
 
-        <br><br>
+    </div>
 
-        <a href="${pageContext.request.contextPath}/notifications">
-            Notifications
-        </a>
 
-        <hr>
 
-        <h2>Recent Submissions</h2>
+    <!-- Logout -->
 
-        <p>
-            View detailed student submissions using
-            <a href="${pageContext.request.contextPath}/submissions">
-                View Student Submissions
-            </a>.
-        </p>
-
-        <hr>
+    <div class="teacher-logout">
 
         <a href="${pageContext.request.contextPath}/logout">
-            Logout
+            ⇥ &nbsp; Logout
         </a>
 
-    </body>
+    </div>
+
+
+</body>
+
 </html>

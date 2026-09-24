@@ -3,50 +3,142 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Student Dashboard</title>
-    </head>
 
-    <body>
+<head>
 
-        <h1>PracTrack-Student Dashboard</h1>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 
-        <h3>
-            Welcome, <%= session.getAttribute("userName") %>
-        </h3>
+    <title>Student Dashboard</title>
 
-        <hr>
+</head>
 
-        <h2>My Practicals</h2>
+<body class="student-dashboard">
 
-        <a href="${pageContext.request.contextPath}/practicals">
-            View Practicals
-        </a>
+    <!-- Header -->
 
-        <br><br>
+    <div class="student-header">
 
-        <a href="${pageContext.request.contextPath}/submissionStatus">
-            Submission Status
-        </a>
+        <div class="brand-title">
 
-        <br><br>
+            <span class="brand-icon">🎓</span>
 
-        <a href="${pageContext.request.contextPath}/notifications">
-            Notifications
-        </a>
+            <span>PracTrack</span>
 
-        <br><br>
+            <span class="header-separator">—</span>
 
-        <table border="1" cellpadding="10">
+            <span class="dashboard-title">
+                Student Dashboard
+            </span>
+
+        </div>
+
+        <div class="student-profile">
+
+            👤 <%= session.getAttribute("userName") %>
+
+        </div>
+
+    </div>
+
+
+    <!-- Welcome Section -->
+
+    <div class="welcome-section">
+
+        <div class="welcome-icon">
+            👋
+        </div>
+
+        <div class="welcome-content">
+
+            <h2>
+                Welcome, <%= session.getAttribute("userName") %>
+            </h2>
+
+            <p>
+                Manage your practical submissions and track their status here.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Quick Actions -->
+
+    <div class="student-actions">
+
+        <h2>Quick Actions</h2>
+
+        <div class="action-cards">
+
+            <a class="action-card"
+               href="${pageContext.request.contextPath}/practicals">
+
+                <span class="action-icon">📚</span>
+
+                <span>
+                    <strong>View Practicals</strong>
+                    <small>See all available practicals</small>
+                </span>
+
+            </a>
+
+
+            <a class="action-card"
+               href="${pageContext.request.contextPath}/submissionStatus">
+
+                <span class="action-icon">📋</span>
+
+                <span>
+                    <strong>Submission Status</strong>
+                    <small>Track your submissions</small>
+                </span>
+
+            </a>
+
+
+            <a class="action-card"
+               href="${pageContext.request.contextPath}/notifications">
+
+                <span class="action-icon">🔔</span>
+
+                <span>
+                    <strong>Notifications</strong>
+                    <small>View latest updates</small>
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Practical Status -->
+
+    <div class="practical-section">
+
+        <h2>▤ &nbsp; My Practical Status</h2>
+
+        <table>
 
             <tr>
+
                 <th>Practical</th>
+
                 <th>Title</th>
+
                 <th>Status</th>
+
                 <th>Action</th>
+
             </tr>
 
+
             <%
+
                 ResultSet rs =
                         (ResultSet) request.getAttribute("practicals");
 
@@ -65,22 +157,43 @@
                             rs.getLong("submission_id");
 
                     if (rs.wasNull()) {
+
                         status = "NOT_SUBMITTED";
+
                     }
+
             %>
+
 
             <tr>
 
-                <td><%= practicalNo %></td>
+                <td>
+                    <%= practicalNo %>
+                </td>
 
-                <td><%= title %></td>
 
-                <td><%= status %></td>
+                <td>
+                    <%= title %>
+                </td>
+
+
+                <td>
+
+                    <span class="status-badge <%= status.toLowerCase() %>">
+
+                        <%= status %>
+
+                    </span>
+
+                </td>
+
 
                 <td>
 
                     <%
+
                         if ("NOT_SUBMITTED".equals(status)) {
+
                     %>
 
                         <a href="<%= request.getContextPath() %>/submitPractical">
@@ -88,7 +201,9 @@
                         </a>
 
                     <%
+
                         } else if ("RESUBMIT".equals(status)) {
+
                     %>
 
                         <a href="<%= request.getContextPath() %>/submitPractical">
@@ -96,7 +211,9 @@
                         </a>
 
                     <%
+
                         } else {
+
                     %>
 
                         <a href="<%= request.getContextPath() %>/submissionStatus">
@@ -104,24 +221,38 @@
                         </a>
 
                     <%
+
                         }
+
                     %>
 
                 </td>
 
             </tr>
 
+
             <%
+
                 }
+
             %>
 
         </table>
 
-        <hr>
+    </div>
+
+
+    <!-- Logout -->
+
+    <div class="logout-section">
 
         <a href="${pageContext.request.contextPath}/logout">
-            Logout
+            ⇥ &nbsp; Logout
         </a>
 
-    </body>
+    </div>
+
+
+</body>
+
 </html>

@@ -3,63 +3,141 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type"
-              content="text/html; charset=UTF-8">
-        <title>Submission Status</title>
-    </head>
 
-    <body>
+<head>
 
-        <h1>Submission Status</h1>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=UTF-8">
 
-        <table border="1" cellpadding="10">
+    <title>Submission Status</title>
 
-            <tr>
-                <th>Practical</th>
-                <th>File Name</th>
-                <th>Submitted On</th>
-                <th>Status</th>
-            </tr>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/style.css">
 
-            <%
-                ResultSet rs =
-                    (ResultSet) request.getAttribute("submissions");
+</head>
 
-                while (rs != null && rs.next()) {
-            %>
+<body class="submission-status-page">
 
-            <tr>
 
-                <td>
-                    <%= rs.getString("title") %>
-                </td>
+    <!-- Header -->
 
-                <td>
-                    <%= rs.getString("file_name") %>
-                </td>
+    <div class="page-header">
 
-                <td>
-                    <%= rs.getTimestamp("submitted_at") %>
-                </td>
+        <div class="page-brand">
 
-                <td>
-                    <%= rs.getString("status") %>
-                </td>
+            <span class="page-brand-icon">🎓</span>
 
-            </tr>
+            <span>PracTrack</span>
 
-            <%
-                }
-            %>
+            <span class="page-separator">—</span>
 
-        </table>
+            <span class="page-title">
+                Submission Status
+            </span>
 
-        <br>
+        </div>
 
-        <a href="<%= request.getContextPath() %>/practicals">
-            Back to Practicals
-        </a>
+    </div>
 
-    </body>
+
+    <!-- Main Content -->
+
+    <div class="page-content">
+
+        <div class="content-heading">
+
+            <h2>📋 My Submission Status</h2>
+
+            <p>
+                Track the status of your submitted practical files.
+            </p>
+
+        </div>
+
+
+        <div class="status-table-card">
+
+            <table>
+
+                <tr>
+
+                    <th>Practical</th>
+                    <th>File Name</th>
+                    <th>Submitted On</th>
+                    <th>Status</th>
+
+                </tr>
+
+
+                <%
+
+                    ResultSet rs =
+                            (ResultSet) request.getAttribute("submissions");
+
+                    while (rs != null && rs.next()) {
+
+                        String status =
+                                rs.getString("status");
+
+                %>
+
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            <%= rs.getString("title") %>
+                        </strong>
+                    </td>
+
+
+                    <td>
+                        <%= rs.getString("file_name") %>
+                    </td>
+
+
+                    <td>
+                        <%= rs.getTimestamp("submitted_at") %>
+                    </td>
+
+
+                    <td>
+
+                        <span class="status-badge <%= status.toLowerCase() %>">
+
+                            <%= status %>
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+
+                <%
+
+                    }
+
+                %>
+
+            </table>
+
+        </div>
+
+
+        <!-- Back -->
+
+        <div class="page-bottom">
+
+            <a href="${pageContext.request.contextPath}/studentDashboard">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+</body>
+
 </html>
