@@ -54,6 +54,20 @@
         </div>
 
 
+        <!-- Clear Notifications -->
+
+        <div class="notifications-actions">
+
+            <a href="<%= request.getContextPath() %>/clearNotifications"
+               onclick="return confirm('Are you sure you want to clear all notifications?');">
+
+                🗑️ Clear Notifications
+
+            </a>
+
+        </div>
+
+
         <div class="teacher-notifications-card">
 
             <%

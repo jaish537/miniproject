@@ -35,6 +35,7 @@ public class StudentDAO {
         return result;
     }
 
+
     public ResultSet getStudentByEmail(String email)
             throws SQLException {
 
@@ -47,4 +48,141 @@ public class StudentDAO {
 
         return ps.executeQuery();
     }
+
+
+    // Add a new student
+   public int addStudent(String name,
+                      String rollNo,
+                      String email,
+                      int semester,
+                      String section)
+        throws SQLException {
+
+    String sql =
+            "INSERT INTO students " +
+            "(student_id, name, roll_no, email, password, semester, section) " +
+            "VALUES (student_seq.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+
+    Connection con = dbconnection.getConnection();
+
+    PreparedStatement ps =
+            con.prepareStatement(sql);
+
+    ps.setString(1, name);
+    ps.setString(2, rollNo);
+    ps.setString(3, email);
+
+    // Temporary password
+    ps.setString(4, "student123");
+
+    ps.setInt(5, semester);
+    ps.setString(6, section);
+
+    int result =
+            ps.executeUpdate();
+
+    ps.close();
+    con.close();
+
+    return result;
+}
+   public ResultSet getAllStudents()
+        throws SQLException {
+
+    String sql =
+            "SELECT student_id, name, roll_no, email, " +
+            "semester, section " +
+            "FROM students " +
+            "ORDER BY student_id";
+
+    Connection con =
+            dbconnection.getConnection();
+
+    PreparedStatement ps =
+            con.prepareStatement(sql);
+
+    return ps.executeQuery();
+}
+   public ResultSet getStudentById(long studentId)
+        throws SQLException {
+
+    String sql =
+            "SELECT student_id, name, roll_no, email, " +
+            "semester, section " +
+            "FROM students " +
+            "WHERE student_id = ?";
+
+    Connection con =
+            dbconnection.getConnection();
+
+    PreparedStatement ps =
+            con.prepareStatement(sql);
+
+    ps.setLong(1, studentId);
+
+    return ps.executeQuery();
+}
+
+
+public int updateStudent(long studentId,
+                         String name,
+                         String rollNo,
+                         String email,
+                         int semester,
+                         String section)
+        throws SQLException {
+
+    String sql =
+            "UPDATE students " +
+            "SET name = ?, " +
+            "roll_no = ?, " +
+            "email = ?, " +
+            "semester = ?, " +
+            "section = ? " +
+            "WHERE student_id = ?";
+
+    Connection con =
+            dbconnection.getConnection();
+
+    PreparedStatement ps =
+            con.prepareStatement(sql);
+
+    ps.setString(1, name);
+    ps.setString(2, rollNo);
+    ps.setString(3, email);
+    ps.setInt(4, semester);
+    ps.setString(5, section);
+    ps.setLong(6, studentId);
+
+    int result =
+            ps.executeUpdate();
+
+    ps.close();
+    con.close();
+
+    return result;
+}
+public int deleteStudent(long studentId)
+        throws SQLException {
+
+    String sql =
+            "DELETE FROM students " +
+            "WHERE student_id = ?";
+
+    Connection con =
+            dbconnection.getConnection();
+
+    PreparedStatement ps =
+            con.prepareStatement(sql);
+
+    ps.setLong(1, studentId);
+
+    int result =
+            ps.executeUpdate();
+
+    ps.close();
+    con.close();
+
+    return result;
+}
 }

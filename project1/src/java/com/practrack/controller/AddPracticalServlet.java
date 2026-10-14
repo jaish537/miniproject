@@ -1,8 +1,13 @@
 package com.practrack.controller;
 
+import com.practrack.dao.NotificationDAO;
 import com.practrack.dao.PracticalDAO;
+import com.practrack.dao.StudentDAO;
+
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.ResultSet;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,29 +22,75 @@ public class AddPracticalServlet extends HttpServlet {
                            HttpServletResponse response)
             throws ServletException, IOException {
 
-        String subjectId = request.getParameter("subjectId");
-        String practicalNo = request.getParameter("practicalNo");
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        String deadline = request.getParameter("deadline");
+        String subjectId =
+                request.getParameter("subjectId");
+
+        String practicalNo =
+                request.getParameter("practicalNo");
+
+        String title =
+                request.getParameter("title");
+
+        String description =
+                request.getParameter("description");
+
+        String deadline =
+                request.getParameter("deadline");
 
         try {
 
-            PracticalDAO dao = new PracticalDAO();
+            PracticalDAO dao =
+                    new PracticalDAO();
 
-            int result = dao.addPractical(
-                    Long.parseLong(subjectId),
-                    Integer.parseInt(practicalNo),
-                    title,
-                    description,
-                    Date.valueOf(deadline)
-            );
+            int result =
+                    dao.addPractical(
+                            Long.parseLong(subjectId),
+                            Integer.parseInt(practicalNo),
+                            title,
+                            description,
+                            Date.valueOf(deadline)
+                    );
 
             if (result > 0) {
 
-                request.getRequestDispatcher(
-                        "/WEB-INF/Teacher/dashboard.jsp"
-                ).forward(request, response);
+                /*
+                 * Notify all students about the new practical
+                 */
+
+                StudentDAO studentDAO =
+                        new StudentDAO();
+
+                ResultSet students =
+                        studentDAO.getAllStudents();
+
+                NotificationDAO notificationDAO =
+                        new NotificationDAO();
+
+                String message =
+                        "New practical added: "
+                        + title
+                        + ". Deadline: "
+                        + deadline
+                        + ". Please check your practicals.";
+
+                while (students.next()) {
+
+                    long studentId =
+                            students.getLong("student_id");
+
+                    notificationDAO.addNotification(
+                            "STUDENT",
+                            studentId,
+                            message
+                    );
+                }
+
+                students.close();
+
+                response.sendRedirect(
+                        request.getContextPath()
+                        + "/teacherDashboard"
+                );
 
             } else {
 
@@ -52,17 +103,22 @@ public class AddPracticalServlet extends HttpServlet {
 
             e.printStackTrace();
 
-            response.setContentType("text/html;charset=UTF-8");
+            response.setContentType(
+                    "text/html;charset=UTF-8"
+            );
 
             response.getWriter().println(
                     "<h2>Error adding practical</h2>"
             );
 
             response.getWriter().println(
-                    "<p>" + e.getMessage() + "</p>"
+                    "<p>"
+                    + e.getMessage()
+                    + "</p>"
             );
         }
     }
+
 
     @Override
     protected void doGet(HttpServletRequest request,

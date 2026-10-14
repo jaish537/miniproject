@@ -128,6 +128,16 @@
 
                         </a>
 
+                        <br><br>
+
+                        <a class="review-button"
+                           href="<%= request.getContextPath() %>/viewPdf?submissionId=<%= rs.getLong("submission_id") %>"
+                           target="_blank">
+
+                            📄 View PDF
+
+                        </a>
+
                     </td>
 
                 </tr>

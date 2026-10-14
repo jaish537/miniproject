@@ -63,6 +63,30 @@
         </div>
 
     </div>
+            <%
+String latestNotification =
+        (String) request.getAttribute("latestNotification");
+
+if (latestNotification != null &&
+    !latestNotification.trim().isEmpty()) {
+%>
+
+<div class="latest-notification-popup">
+    <div class="latest-notification-icon">🔔</div>
+
+    <div class="latest-notification-content">
+        <strong>Latest Notification</strong>
+        <p><%= latestNotification %></p>
+
+        <a href="${pageContext.request.contextPath}/notifications">
+            View All Notifications →
+        </a>
+    </div>
+</div>
+
+<%
+}
+%>
 
 
     <!-- Quick Actions -->
@@ -127,11 +151,9 @@
             <tr>
 
                 <th>Practical</th>
-
                 <th>Title</th>
-
+                <th>Deadline</th>
                 <th>Status</th>
-
                 <th>Action</th>
 
             </tr>
@@ -142,7 +164,15 @@
                 ResultSet rs =
                         (ResultSet) request.getAttribute("practicals");
 
+                java.sql.Date today =
+                        new java.sql.Date(
+                                System.currentTimeMillis()
+                        );
+
                 while (rs != null && rs.next()) {
+
+                    long practicalId =
+                            rs.getLong("practical_id");
 
                     int practicalNo =
                             rs.getInt("practical_no");
@@ -150,16 +180,14 @@
                     String title =
                             rs.getString("title");
 
+                    java.sql.Date deadline =
+                            rs.getDate("deadline");
+
                     String status =
                             rs.getString("status");
 
-                    long submissionId =
-                            rs.getLong("submission_id");
-
-                    if (rs.wasNull()) {
-
+                    if (status == null) {
                         status = "NOT_SUBMITTED";
-
                     }
 
             %>
@@ -178,6 +206,11 @@
 
 
                 <td>
+                    <%= deadline %>
+                </td>
+
+
+                <td>
 
                     <span class="status-badge <%= status.toLowerCase() %>">
 
@@ -192,23 +225,44 @@
 
                     <%
 
-                        if ("NOT_SUBMITTED".equals(status)) {
+                        if ("CHECKED".equalsIgnoreCase(status)) {
 
                     %>
 
-                        <a href="<%= request.getContextPath() %>/submitPractical">
-                            Submit
+                        <a href="<%= request.getContextPath() %>/submissionStatus">
+                            View
                         </a>
 
                     <%
 
-                        } else if ("RESUBMIT".equals(status)) {
+                        } else if ("RESUBMIT".equalsIgnoreCase(status)) {
 
                     %>
 
-                        <a href="<%= request.getContextPath() %>/submitPractical">
+                        <a href="<%= request.getContextPath() %>/submitPractical?practicalId=<%= practicalId %>">
                             Submit Again
                         </a>
+
+                    <%
+
+                        } else if ("SUBMITTED".equalsIgnoreCase(status)) {
+
+                    %>
+
+                        <a href="<%= request.getContextPath() %>/submissionStatus">
+                            View
+                        </a>
+
+                    <%
+
+                        } else if (deadline != null &&
+                                   today.after(deadline)) {
+
+                    %>
+
+                        <span>
+                            Deadline Passed
+                        </span>
 
                     <%
 
@@ -216,8 +270,8 @@
 
                     %>
 
-                        <a href="<%= request.getContextPath() %>/submissionStatus">
-                            View
+                        <a href="<%= request.getContextPath() %>/submitPractical?practicalId=<%= practicalId %>">
+                            Submit
                         </a>
 
                     <%

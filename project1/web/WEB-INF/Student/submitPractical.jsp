@@ -52,41 +52,42 @@
             <h2>Submit Your Practical</h2>
 
             <p class="submit-description">
-                Enter the practical ID and your practical file name
-                to submit your work.
+                Upload your practical PDF file.
             </p>
 
 
             <form action="${pageContext.request.contextPath}/submitPractical"
-                  method="post">
+                  method="post"
+                  enctype="multipart/form-data">
 
 
-                <label for="practicalId">
-                    Practical ID
-                </label>
+                <!-- Practical ID automatically received from Practicals page -->
 
-                <input type="number"
-                       id="practicalId"
+                <input type="hidden"
                        name="practicalId"
-                       placeholder="Enter practical ID"
-                       required>
+                       value="<%= request.getParameter("practicalId") %>">
 
 
-                <label for="fileName">
-                    File Name
+                <label for="file">
+                    Practical PDF
                 </label>
 
-                <input type="text"
-                       id="fileName"
-                       name="fileName"
-                       placeholder="Example: practical1.pdf"
+                <input type="file"
+                       id="file"
+                       name="file"
+                       accept=".pdf,application/pdf"
                        required>
+
+
+                <p style="font-size:13px; color:#718397; margin-top:8px;">
+                    Only PDF files are allowed.
+                </p>
 
 
                 <button type="submit"
                         class="submit-practical-button">
 
-                    Submit Practical
+                    📤 Submit Practical
 
                 </button>
 

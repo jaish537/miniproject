@@ -72,6 +72,44 @@
 
 
 
+    <!-- Latest Notification -->
+
+    <%
+        String latestNotification =
+                (String) request.getAttribute("latestNotification");
+
+        if (latestNotification != null &&
+            !latestNotification.trim().isEmpty()) {
+    %>
+
+    <div class="latest-notification-popup">
+
+        <div class="latest-notification-icon">
+            🔔
+        </div>
+
+        <div class="latest-notification-content">
+
+            <strong>Latest Notification</strong>
+
+            <p>
+                <%= latestNotification %>
+            </p>
+
+            <a href="${pageContext.request.contextPath}/notifications">
+                View All Notifications →
+            </a>
+
+        </div>
+
+    </div>
+
+    <%
+        }
+    %>
+
+
+
     <!-- Overview -->
 
     <div class="teacher-overview">
@@ -195,7 +233,64 @@
                 </span>
 
             </a>
+               
+        <a class="teacher-action-card"
+         href="${pageContext.request.contextPath}/addStudents">
 
+        <span class="teacher-action-icon">
+         👨‍🎓
+        </span>
+
+        <span>
+
+        <strong>Add Students</strong>
+
+        <small>
+            Add multiple students using CSV
+        </small>
+
+    </span>
+
+    </a>     
+         
+     <a class="teacher-action-card"
+   href="${pageContext.request.contextPath}/manageStudents">
+
+    <span class="teacher-action-icon">
+        👥
+    </span>
+
+    <span>
+
+        <strong>Manage Students</strong>
+
+        <small>
+            View, edit or delete student records.
+        </small>
+
+    </span>
+
+</a>
+
+
+            <a class="teacher-action-card"
+               href="${pageContext.request.contextPath}/managePracticals">
+
+                <span class="teacher-action-icon">
+                    ✏️
+                </span>
+
+                <span>
+
+                    <strong>Edit Practicals</strong>
+
+                    <small>
+                        Update practical details and deadline
+                    </small>
+
+                </span>
+
+            </a>
 
 
             <a class="teacher-action-card"

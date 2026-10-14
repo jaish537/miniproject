@@ -18,8 +18,6 @@
 <body class="notifications-page">
 
 
-    <!-- Header -->
-
     <div class="page-header">
 
         <div class="page-brand">
@@ -39,7 +37,6 @@
     </div>
 
 
-    <!-- Main Content -->
 
     <div class="page-content">
 
@@ -54,12 +51,28 @@
         </div>
 
 
+
+        <div class="notifications-actions">
+
+            <a href="<%= request.getContextPath() %>/clearNotifications"
+               onclick="return confirm('Are you sure you want to clear all notifications?');">
+
+                🗑️ Clear Notifications
+
+            </a>
+
+        </div>
+
+
+
         <div class="notifications-card">
 
             <%
 
                 ResultSet rs =
-                        (ResultSet) request.getAttribute("notifications");
+                        (ResultSet) request.getAttribute(
+                                "notifications"
+                        );
 
                 boolean hasNotifications = false;
 
@@ -75,6 +88,7 @@
                 <div class="notification-icon">
                     🔔
                 </div>
+
 
                 <div class="notification-content">
 
@@ -106,7 +120,9 @@
                     ✓
                 </div>
 
-                <h3>No New Notifications</h3>
+                <h3>
+                    No New Notifications
+                </h3>
 
                 <p>
                     You don't have any notifications at the moment.
@@ -124,15 +140,17 @@
         </div>
 
 
-        <!-- Back -->
 
         <div class="page-bottom">
 
             <a href="${pageContext.request.contextPath}/studentDashboard">
+
                 ← Back to Dashboard
+
             </a>
 
         </div>
+
 
     </div>
 

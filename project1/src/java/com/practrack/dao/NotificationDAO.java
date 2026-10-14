@@ -71,4 +71,74 @@ public class NotificationDAO {
 
         return result;
     }
+    public int clearNotifications(String userType,
+                              long userId)
+        throws SQLException {
+
+    String sql =
+            "DELETE FROM notifications " +
+            "WHERE user_type = ? " +
+            "AND user_id = ?";
+
+    Connection con = dbconnection.getConnection();
+    PreparedStatement ps =
+            con.prepareStatement(sql);
+
+    ps.setString(1, userType);
+    ps.setLong(2, userId);
+
+    int result =
+            ps.executeUpdate();
+
+    ps.close();
+    con.close();
+
+    return result;
+}
+  public String getLatestNotificationMessage(String userType,
+                                           long userId)
+        throws SQLException {
+
+    String sql =
+            "SELECT message " +
+            "FROM notifications " +
+            "WHERE user_type = ? " +
+            "AND user_id = ? " +
+            "AND notification_id = (" +
+            "SELECT MAX(notification_id) " +
+            "FROM notifications " +
+            "WHERE user_type = ? " +
+            "AND user_id = ?" +
+            ")";
+
+    Connection con = dbconnection.getConnection();
+    PreparedStatement ps =
+            con.prepareStatement(sql);
+
+    ps.setString(1, userType);
+    ps.setLong(2, userId);
+    ps.setString(3, userType);
+    ps.setLong(4, userId);
+
+    ResultSet rs = ps.executeQuery();
+
+    String message = null;
+
+    if (rs.next()) {
+        java.sql.Clob clob = rs.getClob("message");
+
+        if (clob != null) {
+            message = clob.getSubString(
+                    1,
+                    (int) clob.length()
+            );
+        }
+    }
+
+    rs.close();
+    ps.close();
+    con.close();
+
+    return message;
+}
 }

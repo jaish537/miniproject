@@ -132,4 +132,87 @@ public class SubmissionDAO {
 
         return studentId;
     }
+    public String getFileNameBySubmissionId(long submissionId)
+        throws SQLException {
+
+    String sql =
+            "SELECT file_name FROM submissions " +
+            "WHERE submission_id = ?";
+
+    Connection con = dbconnection.getConnection();
+    PreparedStatement ps = con.prepareStatement(sql);
+
+    ps.setLong(1, submissionId);
+
+    ResultSet rs = ps.executeQuery();
+
+    String fileName = null;
+
+    if (rs.next()) {
+        fileName = rs.getString("file_name");
+    }
+
+    rs.close();
+    ps.close();
+    con.close();
+
+    return fileName;
+}
+    public String getSubmissionStatus(long studentId,
+                                  long practicalId)
+        throws SQLException {
+
+    String sql =
+            "SELECT status FROM submissions " +
+            "WHERE student_id = ? " +
+            "AND practical_id = ?";
+
+    Connection con = dbconnection.getConnection();
+    PreparedStatement ps = con.prepareStatement(sql);
+
+    ps.setLong(1, studentId);
+    ps.setLong(2, practicalId);
+
+    ResultSet rs = ps.executeQuery();
+
+    String status = null;
+
+    if (rs.next()) {
+        status = rs.getString("status");
+    }
+
+    rs.close();
+    ps.close();
+    con.close();
+
+    return status;
+}
+    public int resubmitPractical(long studentId,
+                             long practicalId,
+                             String fileName)
+        throws SQLException {
+
+    String sql =
+            "UPDATE submissions " +
+            "SET file_name = ?, " +
+            "status = 'SUBMITTED', " +
+            "submitted_at = CURRENT_TIMESTAMP " +
+            "WHERE student_id = ? " +
+            "AND practical_id = ? " +
+            "AND status = 'RESUBMIT'";
+
+    Connection con = dbconnection.getConnection();
+    PreparedStatement ps = con.prepareStatement(sql);
+
+    ps.setString(1, fileName);
+    ps.setLong(2, studentId);
+    ps.setLong(3, practicalId);
+
+    int result = ps.executeUpdate();
+
+    ps.close();
+    con.close();
+
+    return result;
+}
 }

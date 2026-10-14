@@ -2588,3 +2588,1059 @@ table a:hover {
     }
 
 }
+/* =========================================
+   PRACKTRACK - FINAL UI POLISH
+   ========================================= */
+
+/* -----------------------------------------
+   MANAGE STUDENTS / MANAGE PRACTICALS TABLE
+   ----------------------------------------- */
+
+.manage-table-card,
+.students-table-card,
+.practicals-table-card {
+    width: 90%;
+    margin: 30px auto;
+    background: #ffffff;
+    border: 1px solid #e1ebf4;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(36, 90, 141, 0.06);
+    overflow-x: auto;
+}
+
+.manage-table-card table,
+.students-table-card table,
+.practicals-table-card table {
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.manage-table-card th,
+.students-table-card th,
+.practicals-table-card th {
+    padding: 15px 14px;
+    background: #eef6fd;
+    color: #41627f;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.manage-table-card td,
+.students-table-card td,
+.practicals-table-card td {
+    padding: 14px;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.manage-table-card tr:hover,
+.students-table-card tr:hover,
+.practicals-table-card tr:hover {
+    background: #f8fbfe;
+}
+
+
+/* -----------------------------------------
+   EDIT / DELETE ACTIONS
+   ----------------------------------------- */
+
+.edit-button,
+.manage-edit-button {
+    background: #eef6fd !important;
+    color: #245a8d !important;
+    border: 1px solid #cfe3f5 !important;
+    padding: 7px 13px !important;
+    margin: 2px !important;
+    border-radius: 7px !important;
+    font-size: 12px !important;
+    font-weight: 600;
+}
+
+.edit-button:hover,
+.manage-edit-button:hover {
+    background: #e1f0fb !important;
+    border-color: #bcd9ed !important;
+}
+
+.delete-button,
+.manage-delete-button {
+    background: #fff4f2 !important;
+    color: #b85c50 !important;
+    border: 1px solid #f0d8d3 !important;
+    padding: 7px 13px !important;
+    margin: 2px !important;
+    border-radius: 7px !important;
+    font-size: 12px !important;
+    font-weight: 600;
+}
+
+.delete-button:hover,
+.manage-delete-button:hover {
+    background: #ffebe8 !important;
+    border-color: #e8c3bd !important;
+    color: #a94d42 !important;
+}
+
+
+/* -----------------------------------------
+   MANAGE PAGE HEADING
+   ----------------------------------------- */
+
+.manage-page-heading {
+    width: 90%;
+    margin: 30px auto 20px auto;
+}
+
+.manage-page-heading h2 {
+    margin: 0 0 7px 0;
+    color: #245a8d;
+}
+
+.manage-page-heading p {
+    margin: 0;
+    color: #718397;
+    font-size: 14px;
+}
+
+
+/* -----------------------------------------
+   EDIT STUDENT / EDIT PRACTICAL
+   ----------------------------------------- */
+
+.edit-page-content {
+    width: 100%;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.edit-page-card {
+    width: 100%;
+    max-width: 560px;
+    background: #ffffff;
+    padding: 32px;
+    border: 1px solid #e1ebf4;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(36, 90, 141, 0.07);
+}
+
+.edit-page-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf4fc;
+    border-radius: 13px;
+    font-size: 25px;
+}
+
+.edit-page-card h2 {
+    margin: 0 0 8px 0;
+    color: #245a8d;
+    font-size: 22px;
+    text-align: center;
+}
+
+.edit-page-description {
+    margin: 0 0 25px 0;
+    color: #718397;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.edit-page-card form {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.edit-page-card label {
+    display: block;
+    margin-bottom: 7px;
+    color: #405d75;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.edit-page-card input,
+.edit-page-card textarea,
+.edit-page-card select {
+    width: 100%;
+    padding: 12px 13px;
+    margin: 0 0 18px 0;
+    border: 1px solid #d5e0e9;
+    border-radius: 8px;
+    background: #fbfdff;
+    color: #34495e;
+    font-size: 14px;
+    outline: none;
+}
+
+.edit-page-card input:focus,
+.edit-page-card textarea:focus,
+.edit-page-card select:focus {
+    border-color: #8ebce0;
+    box-shadow: 0 0 0 3px #edf6fd;
+}
+
+.update-button {
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 12px;
+    background: #e8f4fc;
+    color: #245a8d;
+    border: 1px solid #cfe3f2;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.update-button:hover {
+    background: #dceefb;
+    transform: translateY(-1px);
+}
+
+.edit-page-back {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.edit-page-back a {
+    margin: 0;
+    padding: 7px 10px;
+    background: transparent;
+    border: none;
+    color: #2874b2;
+}
+
+.edit-page-back a:hover {
+    background: #f0f7ff;
+}
+
+
+/* -----------------------------------------
+   ADD STUDENTS PAGE
+   ----------------------------------------- */
+
+.add-students-content {
+    width: 100%;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.add-students-card {
+    width: 100%;
+    max-width: 540px;
+    background: #ffffff;
+    padding: 32px;
+    border: 1px solid #e1ebf4;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(36, 90, 141, 0.07);
+    text-align: center;
+}
+
+.add-students-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf4fc;
+    border-radius: 13px;
+    font-size: 25px;
+}
+
+.add-students-card h2 {
+    margin: 0 0 8px 0;
+    color: #245a8d;
+    font-size: 22px;
+}
+
+.add-students-description {
+    margin: 0 0 25px 0;
+    color: #718397;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.add-students-card form {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: left;
+}
+
+.add-students-card label {
+    display: block;
+    margin-bottom: 7px;
+    color: #405d75;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.add-students-card input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin: 0 0 18px 0;
+    background: #fbfdff;
+    border: 1px solid #d5e0e9;
+    border-radius: 8px;
+    color: #60758a;
+}
+
+.import-button {
+    width: 100%;
+    padding: 12px;
+    background: #e8f4fc;
+    color: #245a8d;
+    border: 1px solid #cfe3f2;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.import-button:hover {
+    background: #dceefb;
+    transform: translateY(-1px);
+}
+
+.csv-info {
+    margin-top: 22px;
+    padding: 15px;
+    background: #f8fbfe;
+    border: 1px solid #dceaf5;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.csv-info strong {
+    color: #405d75;
+    font-size: 13px;
+}
+
+.csv-info p {
+    margin: 7px 0 0 0;
+    color: #718397;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* -----------------------------------------
+   CLEAR NOTIFICATIONS BUTTON
+   ----------------------------------------- */
+
+.clear-notifications-button {
+    display: inline-block;
+    margin: 0 0 18px 0;
+    padding: 9px 15px;
+    background: #fff4f2 !important;
+    color: #b85c50 !important;
+    border: 1px solid #f0d8d3 !important;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.clear-notifications-button:hover {
+    background: #ffebe8 !important;
+    transform: translateY(-1px);
+}
+
+
+/* -----------------------------------------
+   LATEST NOTIFICATION POPUP
+   ----------------------------------------- */
+
+.latest-notification-popup {
+    width: 90%;
+    margin: 20px auto;
+    padding: 17px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f0f7ff;
+    border: 1px solid #cfe3f5;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(36, 90, 141, 0.06);
+}
+
+.latest-notification-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf4fc;
+    border-radius: 11px;
+    font-size: 20px;
+}
+
+.latest-notification-content {
+    flex: 1;
+}
+
+.latest-notification-content strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #245a8d;
+    font-size: 14px;
+}
+
+.latest-notification-content p {
+    margin: 0 0 7px 0;
+    color: #405d75;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.latest-notification-content a {
+    margin: 0;
+    padding: 5px 9px;
+    background: transparent;
+    border: none;
+    color: #2874b2;
+    font-size: 12px;
+}
+
+.latest-notification-content a:hover {
+    background: #e4f1fb;
+}
+
+
+/* -----------------------------------------
+   SUCCESS / ERROR MESSAGE BOXES
+   ----------------------------------------- */
+
+.success-message,
+.success-box {
+    width: 90%;
+    margin: 20px auto;
+    padding: 14px 17px;
+    background: #eaf8f0;
+    border: 1px solid #cfe9da;
+    border-radius: 10px;
+    color: #2e8b57;
+    font-size: 13px;
+}
+
+.error-message,
+.error-box {
+    width: 90%;
+    margin: 20px auto;
+    padding: 14px 17px;
+    background: #fff4f2;
+    border: 1px solid #f0d8d3;
+    border-radius: 10px;
+    color: #b85c50;
+    font-size: 13px;
+}
+
+
+/* -----------------------------------------
+   PAGE BACK BUTTON
+   ----------------------------------------- */
+
+.page-back-button {
+    margin: 20px 5%;
+}
+
+.page-back-button a {
+    margin: 0;
+    background: transparent;
+    border: none;
+    color: #2874b2;
+}
+
+.page-back-button a:hover {
+    background: #eef6fd;
+}
+
+
+/* -----------------------------------------
+   MOBILE POLISH
+   ----------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .manage-table-card,
+    .students-table-card,
+    .practicals-table-card {
+        width: 95%;
+    }
+
+    .manage-table-card table,
+    .students-table-card table,
+    .practicals-table-card table {
+        min-width: 750px;
+    }
+
+    .manage-page-heading {
+        width: 95%;
+    }
+
+    .edit-page-content,
+    .add-students-content {
+        padding: 25px 15px;
+    }
+
+    .edit-page-card,
+    .add-students-card {
+        padding: 25px 20px;
+    }
+
+    .latest-notification-popup {
+        width: 95%;
+        align-items: flex-start;
+    }
+
+    .latest-notification-content p {
+        font-size: 12px;
+    }
+}
+/* =========================================
+   MANAGE STUDENTS - FINAL UI POLISH
+   ========================================= */
+
+.manage-students-content {
+    max-width: 1150px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.manage-students-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 25px rgba(30, 80, 120, 0.08);
+    border: 1px solid #e7eef5;
+    overflow-x: auto;
+}
+
+.manage-students-card h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #17324d;
+    font-size: 25px;
+}
+
+.manage-students-description {
+    color: #718397;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.manage-students-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.manage-students-table th {
+    background: #f4f8fc;
+    color: #38536b;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #dfe8f0;
+}
+
+.manage-students-table td {
+    padding: 14px 12px;
+    color: #4d6174;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2f6;
+    vertical-align: middle;
+}
+
+.manage-students-table tr:hover {
+    background: #f9fbfd;
+}
+
+.manage-student-name {
+    font-weight: 600;
+    color: #233f57;
+}
+
+.manage-student-email {
+    color: #60758a;
+}
+
+.manage-student-actions {
+    white-space: nowrap;
+}
+
+.manage-edit-button,
+.manage-delete-button {
+    display: inline-block;
+    padding: 8px 13px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 5px;
+    transition: 0.2s ease;
+}
+
+.manage-edit-button {
+    background: #eaf4ff;
+    color: #2875b8;
+    border: 1px solid #cfe6fa;
+}
+
+.manage-edit-button:hover {
+    background: #dceeff;
+    color: #185f9b;
+}
+
+.manage-delete-button {
+    background: #fff0f0;
+    color: #d95353;
+    border: 1px solid #f4cccc;
+}
+
+.manage-delete-button:hover {
+    background: #ffe2e2;
+    color: #b83d3d;
+}
+
+.manage-students-back {
+    margin-top: 22px;
+}
+
+.manage-students-back a {
+    color: #2875b8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.manage-students-back a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .manage-students-content {
+        margin: 25px auto;
+        padding: 0 12px;
+    }
+
+    .manage-students-card {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .manage-students-card h2 {
+        font-size: 21px;
+    }
+
+    .manage-students-table {
+        min-width: 750px;
+    }
+}
+/* =========================================
+   STUDENT DASHBOARD - FINAL POLISH
+   ========================================= */
+
+/* ---------- Student Header ---------- */
+
+.student-header {
+    min-height: 70px;
+    padding: 0 5%;
+    background: #ffffff;
+    border-bottom: 1px solid #dfe8f0;
+    box-shadow: 0 2px 8px rgba(36, 90, 141, 0.03);
+}
+
+.brand-title {
+    gap: 10px;
+    font-size: 24px;
+}
+
+.brand-icon {
+    font-size: 28px;
+}
+
+.dashboard-title {
+    color: #60758a;
+    font-size: 18px;
+}
+
+.student-profile {
+    color: #405d75;
+    font-size: 14px;
+}
+
+
+/* ---------- Welcome ---------- */
+
+.welcome-section {
+    width: 90%;
+    margin: 28px auto 24px auto;
+    padding: 24px 30px;
+    background: linear-gradient(135deg, #f0f7ff, #f5faff);
+    border: 1px solid #d8e9f7;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(36, 90, 141, 0.06);
+}
+
+.welcome-icon {
+    width: 54px;
+    height: 54px;
+    background: #ffffff;
+    border: 1px solid #e3edf5;
+    border-radius: 13px;
+    font-size: 26px;
+    box-shadow: 0 3px 10px rgba(36, 90, 141, 0.08);
+}
+
+.welcome-content h2 {
+    margin: 0 0 6px 0;
+    color: #245a8d;
+    font-size: 24px;
+}
+
+.welcome-content p {
+    margin: 0;
+    color: #718397;
+    font-size: 14px;
+}
+
+
+/* ---------- Latest Notification ---------- */
+
+.latest-notification-popup {
+    width: 90%;
+    margin: 0 auto 26px auto;
+    padding: 16px 20px;
+    background: #f1f8ff;
+    border: 1px solid #cfe3f5;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px rgba(36, 90, 141, 0.05);
+}
+
+.latest-notification-icon {
+    width: 43px;
+    height: 43px;
+    background: #e6f3fd;
+    border: 1px solid #d5e9f7;
+    border-radius: 11px;
+    font-size: 20px;
+}
+
+.latest-notification-content strong {
+    color: #2f628f;
+    font-size: 13px;
+}
+
+.latest-notification-content p {
+    color: #50677c;
+    font-size: 13px;
+}
+
+.latest-notification-content a {
+    margin: 0;
+    padding: 4px 8px;
+    color: #2874b2;
+    background: transparent;
+    border: none;
+    font-size: 12px;
+}
+
+.latest-notification-content a:hover {
+    background: #e3f0fa;
+    transform: none;
+}
+
+
+/* ---------- Quick Actions ---------- */
+
+.student-actions {
+    width: 90%;
+    margin: 0 auto 26px auto;
+    padding: 25px 26px;
+    background: #ffffff;
+    border: 1px solid #e1eaf2;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(36, 90, 141, 0.06);
+}
+
+.student-actions h2 {
+    margin: 0 0 20px 0;
+    color: #245a8d;
+    font-size: 22px;
+}
+
+.action-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.action-card {
+    min-height: 66px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    padding: 16px 18px;
+    background: #f7fbfe;
+    border: 1px solid #d9e8f4;
+    border-radius: 12px;
+    color: #245a8d;
+    transition: all 0.2s ease;
+}
+
+.action-card:hover {
+    background: #eef7fd;
+    border-color: #bfd9eb;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(36, 90, 141, 0.08);
+}
+
+.action-icon {
+    width: 42px;
+    height: 42px;
+    background: #eaf4fc;
+    border: 1px solid #dcecf7;
+    border-radius: 10px;
+    font-size: 19px;
+}
+
+.action-card strong {
+    margin-bottom: 4px;
+    color: #2f628f;
+    font-size: 14px;
+}
+
+.action-card small {
+    color: #7a8c9c;
+    font-size: 12px;
+}
+
+
+/* ---------- Practical Status ---------- */
+
+.practical-section {
+    width: 90%;
+    margin: 0 auto 26px auto;
+    padding: 25px 26px;
+    background: #ffffff;
+    border: 1px solid #e1eaf2;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(36, 90, 141, 0.06);
+}
+
+.practical-section h2 {
+    margin: 0 0 20px 0;
+    color: #245a8d;
+    font-size: 22px;
+}
+
+.practical-section table {
+    width: 100%;
+    margin: 0;
+    border: 1px solid #e1eaf2;
+    border-radius: 11px;
+    box-shadow: none;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.practical-section th {
+    padding: 14px 15px;
+    background: #edf5fb;
+    color: #405d75;
+    font-size: 13px;
+    font-weight: 700;
+    border-bottom: 1px solid #dce7ef;
+}
+
+.practical-section td {
+    padding: 14px 15px;
+    background: #ffffff;
+    color: #50677c;
+    font-size: 13px;
+    border-bottom: 1px solid #edf2f6;
+    vertical-align: middle;
+}
+
+.practical-section tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.practical-section tbody tr:hover td {
+    background: #f8fbfe;
+}
+
+
+/* ---------- Status Badges ---------- */
+
+.practical-section .status-badge {
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.practical-section .status-badge.checked {
+    background: #eaf8f0;
+    color: #2e8b57;
+    border: 1px solid #cfe9da;
+}
+
+.practical-section .status-badge.submitted {
+    background: #e8f4ff;
+    color: #2875b8;
+    border: 1px solid #cfe3f5;
+}
+
+.practical-section .status-badge.resubmit {
+    background: #fff5e6;
+    color: #c77700;
+    border: 1px solid #f0dfc3;
+}
+
+.practical-section .status-badge.not_submitted {
+    background: #f1f3f5;
+    color: #687784;
+    border: 1px solid #e1e5e8;
+}
+
+
+/* ---------- Table Action Buttons ---------- */
+
+.practical-section table a {
+    margin: 0;
+    padding: 7px 13px;
+    background: #eef6fd;
+    color: #2874b2;
+    border: 1px solid #cfe3f5;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.practical-section table a:hover {
+    background: #e1f0fb;
+    border-color: #bcd9ed;
+    color: #185f9b;
+    transform: translateY(-1px);
+}
+
+
+/* ---------- Logout ---------- */
+
+.logout-section {
+    width: 90%;
+    margin: 0 auto 35px auto;
+}
+
+.logout-section a {
+    width: 100%;
+    margin: 0;
+    padding: 11px 16px;
+    background: #ffffff;
+    color: #2874b2;
+    border: 1px solid #dce8f2;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.logout-section a:hover {
+    background: #f0f7ff;
+    border-color: #c9dfef;
+    color: #185f9b;
+    transform: translateY(-1px);
+}
+
+
+/* ---------- Student Dashboard Mobile ---------- */
+
+@media (max-width: 800px) {
+
+    .action-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .student-actions,
+    .practical-section,
+    .welcome-section,
+    .latest-notification-popup,
+    .logout-section {
+        width: 95%;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .student-header {
+        padding: 14px 5%;
+        min-height: auto;
+    }
+
+    .welcome-section {
+        margin-top: 22px;
+        padding: 20px;
+    }
+
+    .welcome-content h2 {
+        font-size: 21px;
+    }
+
+    .welcome-content p {
+        font-size: 13px;
+    }
+
+    .student-actions,
+    .practical-section {
+        padding: 20px;
+    }
+
+    .practical-section {
+        overflow-x: auto;
+    }
+
+    .practical-section table {
+        min-width: 700px;
+    }
+
+    .latest-notification-popup {
+        align-items: flex-start;
+    }
+
+    .logout-section {
+        margin-bottom: 25px;
+    }
+}

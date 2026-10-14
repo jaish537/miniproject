@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.ResultSet"%>
+<%@page import="com.practrack.dao.SubmissionDAO"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,6 @@
 
 <body class="practicals-page">
 
-
     <!-- Header -->
 
     <div class="page-header">
@@ -36,8 +36,6 @@
             </span>
 
         </div>
-
-       
 
     </div>
 
@@ -77,7 +75,35 @@
                     ResultSet rs =
                             (ResultSet) request.getAttribute("practicals");
 
+                    Object userIdObject =
+                            session.getAttribute("userId");
+
+                    long studentId =
+                            userIdObject != null
+                            ? Long.parseLong(userIdObject.toString())
+                            : 0;
+
+                    SubmissionDAO submissionDAO =
+                            new SubmissionDAO();
+
+                    java.sql.Date today =
+                            new java.sql.Date(
+                                    System.currentTimeMillis()
+                            );
+
                     while (rs != null && rs.next()) {
+
+                        long practicalId =
+                                rs.getLong("practical_id");
+
+                        java.sql.Date deadline =
+                                rs.getDate("deadline");
+
+                        String submissionStatus =
+                                submissionDAO.getSubmissionStatus(
+                                        studentId,
+                                        practicalId
+                                );
 
                 %>
 
@@ -104,18 +130,92 @@
 
 
                     <td>
-                        <%= rs.getDate("deadline") %>
+                        <%= deadline %>
                     </td>
 
 
                     <td>
 
-                        <a class="submit-button"
-                           href="<%= request.getContextPath() %>/submitPractical">
+                        <%
 
-                            Submit
+                            /*
+                             * Already checked
+                             */
+                            if ("CHECKED".equalsIgnoreCase(
+                                    submissionStatus)) {
 
-                        </a>
+                        %>
+
+                            <span>
+                                ✓ Checked
+                            </span>
+
+                        <%
+
+                            /*
+                             * Teacher requested resubmission
+                             */
+                            } else if ("RESUBMIT".equalsIgnoreCase(
+                                    submissionStatus)) {
+
+                        %>
+
+                            <a class="submit-button"
+                               href="<%= request.getContextPath() %>/submitPractical?practicalId=<%= practicalId %>">
+
+                                Resubmit
+
+                            </a>
+
+                        <%
+
+                            /*
+                             * Student already submitted
+                             */
+                            } else if ("SUBMITTED".equalsIgnoreCase(
+                                    submissionStatus)) {
+
+                        %>
+
+                            <span>
+                                Submitted
+                            </span>
+
+                        <%
+
+                            /*
+                             * Deadline has passed
+                             */
+                            } else if (deadline != null &&
+                                       today.after(deadline)) {
+
+                        %>
+
+                            <span>
+                                Deadline Passed
+                            </span>
+
+                        <%
+
+                            /*
+                             * No submission and deadline is active
+                             */
+                            } else {
+
+                        %>
+
+                            <a class="submit-button"
+                               href="<%= request.getContextPath() %>/submitPractical?practicalId=<%= practicalId %>">
+
+                                Submit
+
+                            </a>
+
+                        <%
+
+                            }
+
+                        %>
 
                     </td>
 
@@ -144,7 +244,6 @@
         </div>
 
     </div>
-
 
 </body>
 
